@@ -261,18 +261,3 @@ extension Color {
         self.init(red: Double(r) / 255, green: Double(g) / 255, blue: Double(b) / 255)
     }
 }
-
-class HapticFeedback {
-    #if os(watchOS)
-    //watchOS implementation
-    static func playSelection() -> Void {
-        WKInterfaceDevice.current().play(.click)
-    }
-    #else
-    //iOS implementation
-    let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-    static func playSelection() -> Void {
-        UISelectionFeedbackGenerator().selectionChanged()
-    }
-    #endif
-}
